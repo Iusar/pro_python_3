@@ -2,7 +2,6 @@ import requests
 from pprint import pprint
 from bs4 import BeautifulSoup
 
-
 def get_response(link, keywords):
     response = requests.get(link)
     response.raise_for_status()
@@ -28,11 +27,11 @@ def get_response(link, keywords):
             # Забираем заголовок и ссылку на статью
             for title in article_title:
                 pprint(title.text)
-                pprint(link + title.get('href'))
+                pprint('https://habr.com' + title.get('href'))
 
 
 if __name__ == '__main__':
     link = 'https://habr.com/ru/all'
-    keywords = {'дизайн', 'фото', 'Web', 'Python'}
+    keywords = {'дизайн', 'фото', 'web', 'Python', 'Kubernetes' }
     get_response(link, keywords)
     pass
